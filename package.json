@@ -4,8 +4,8 @@
   "description": "TypeScriptNodeExpress sample app",
   "main": "index.js",
   "scripts": {
-    "build": "node ./node_modules/typescript/lib/typescript",
-    "dev": "node ./node_modules/ts-node/dist/bin ./src/server.ts",
+    "build": "node ./node_modules/typescript/bin/tsc",
+    "dev": "node ./node_modules/nodemon/bin/nodemon ./src/server.ts",
     "start": "node ./node_modules/nodemon/bin/nodemon ./dist/server.js",
     "prod": "npm run build && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,10 +24,15 @@
   "dependencies": {
     "@types/express": "^4.16.1",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.0",
     "mongoose": "^5.5.9",
+    "morgan": "^1.9.1",
     "nodemon": "^1.19.0",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.5"
   }
 }
