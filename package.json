@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node ./node_modules/typescript/bin/tsc",
-    "dev": "node ./node_modules/nodemon/bin/nodemon ./src/server.ts",
+    "dev": "node ./node_modules/nodemon/bin/nodemon --config ./nodemon.json ./src/server.ts",
     "start": "node ./node_modules/nodemon/bin/nodemon ./dist/server.js",
     "prod": "npm run build && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/TameshwarNirmalkar/TypeScriptNodeExpress#readme",
   "dependencies": {
+    "@overnightjs/core": "^1.5.0",
+    "@overnightjs/logger": "^1.0.6",
     "@types/express": "^4.16.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -29,7 +31,9 @@
     "mongoose": "^5.5.9",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.0",
+    "simple-color-print": "^1.0.6",
     "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
     "typescript": "^3.4.5"
   },
   "devDependencies": {

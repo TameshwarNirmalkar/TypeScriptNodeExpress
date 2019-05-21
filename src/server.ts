@@ -1,8 +1,4 @@
-import app from "./app";
+import MainServer from './main';
 const PORT = 3000;
-
-console.log('Run by ts node command');
-
-app.listen(PORT, () => {
-    console.log('Express server listening on port locahost:' + PORT);
-})
+const mainServer = new MainServer();
+mainServer.start(PORT);
