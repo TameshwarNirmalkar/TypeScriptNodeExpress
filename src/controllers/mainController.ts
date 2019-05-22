@@ -18,7 +18,7 @@ export class MainController {
     @Get(':msg')
     private getMessage(req: Request, res: Response): void {
 
-        this.logger.info(req.params.msg);
+        this.logger.info(`Get Message ${req.params.msg}`);
         cinfo(req.params.msg);
         res.status(200).json({msg: req.params.msg});
     }

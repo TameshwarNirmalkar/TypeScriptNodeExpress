@@ -1,7 +1,7 @@
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as logger from 'morgan';
-import * as cors from 'cors';
+// import express from 'express';
+import bodyParser from 'body-parser';
+import logger from 'morgan';
+import cors from 'cors';
 
 import * as controllers from './controllers';
 
@@ -12,7 +12,7 @@ import { Logger } from '@overnightjs/logger';
 class MainServer extends Server {
 
     private readonly logger: Logger;
-    private readonly SERVER_STARTED = 'Main server started on http://locahost:';
+    private readonly SERVER_STARTED = 'Main server started on http://127.0.0.1:';
 
 
     constructor() {
@@ -41,8 +41,8 @@ class MainServer extends Server {
 
     public start(port: number): void {
 
-        this.app.get('*', (req, res) => {
-            res.status(200).json({ message: `${this.SERVER_STARTED}${port}` });
+        this.app.get('/', (req, res) => {
+            res.send({ message: `${this.SERVER_STARTED}${port}` });
         });
 
         this.app.listen(port, () => {
@@ -66,7 +66,7 @@ class MainServer extends Server {
             extended: true,
         }));
         this.app.use(bodyParser.json({ limit: '50mb' }));
-        this.logger.warn(`Name: ${this.app.get}`);
+        // this.logger.warn(`Name: ${this.app.get}`);
     }
 }
 

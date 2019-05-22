@@ -1,12 +1,12 @@
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as logger from 'morgan';
-import * as cors from 'cors';
+import express, { Application } from 'express';
+import bodyParser from 'body-parser';
+import logger from 'morgan';
+import cors from 'cors';
 
 
 class App {
 
-  public app: express.Application;
+  public app: Application;
 
   constructor() {
     this.app = express();
