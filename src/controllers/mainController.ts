@@ -4,7 +4,7 @@ import { Logger } from '@overnightjs/logger';
 import { cerr, cinfo, cwarn, cimp } from 'simple-color-print';
 
 
-@Controller('/api/users')
+@Controller('api/users')
 export class MainController {
 
     private readonly logger: Logger;
@@ -19,7 +19,7 @@ export class MainController {
     private getMessage(req: Request, res: Response): void {
 
         this.logger.info(`Get Message ${req.params.msg}`);
-        cinfo(req.params.msg);
+        cinfo(`Get Message ${req.params.msg}`);
         res.status(200).json({msg: req.params.msg});
     }
 
