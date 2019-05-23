@@ -54,7 +54,7 @@ class MainServer extends Server {
         };
         this.app.use(cors(options));
         this.app.options('*', cors(options));
-        this.app.use(logger('dev'));
+        this.app.use(logger('common')); // dev, combined, tiny, common, short
         this.app.use(bodyParser.urlencoded({
             limit: '150mb',
             extended: true,
