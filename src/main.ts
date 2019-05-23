@@ -11,13 +11,12 @@ import { Logger } from '@overnightjs/logger';
 
 class MainServer extends Server {
 
-    private readonly logger: Logger;
+    private readonly logger: Logger = new Logger();
     private readonly SERVER_STARTED = 'Main server started on http://127.0.0.1:';
 
 
     constructor() {
         super();
-        this.logger = new Logger();
         this.setupConfig();
         this.setupControllers();
     }
