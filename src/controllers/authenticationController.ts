@@ -29,27 +29,27 @@ export class AuthenticationController {
 
   @Get('token/otp/:version')
   private generateOtpForToken(req: Request, res: Response): void {
-    res.status(200).json({msg: req.params.version});
+    res.status(200).json({ msg: req.params.version });
   }
 
   @Get('logout/:version')
   private deleteToken(req: Request, res: Response): void {
-    res.status(200).json({msg: req.params.version});
+    res.status(200).json({ msg: req.params.version });
   }
 
   @Post('login/:version')
   private userLogin(req: Request, res: Response): void {
-    res.status(200).json({...this.loginSuccess});
+    res.status(200).json({ ...this.loginSuccess });
   }
 
   @Post('otp/:version')
   private validateOtp(req: Request, res: Response) {
-    res.status(200).json({...this.loginSuccess});
+    res.status(200).json({ ...this.loginSuccess });
   }
 
   @Post('token/otp/:version')
-  private verifyToken(req: Request, res: Response){
-    res.status(200).json({...this.loginSuccess});
+  private verifyToken(req: Request, res: Response) {
+    res.status(200).json({ ...this.loginSuccess });
   }
 
 }

@@ -18,24 +18,18 @@ class MainServer extends Server {
     constructor() {
         super();
         this.logger = new Logger();
-        // this.app.use(bodyParser.json());
-        // this.app.use(bodyParser.urlencoded({ extended: true }));
         this.setupConfig();
-
         this.setupControllers();
     }
 
     private setupControllers(): void {
-
         const ctlrInstances: any[] = [];
-
         for (const name in controllers) {
             if (controllers.hasOwnProperty(name)) {
                 const controller = (controllers as any)[name];
                 ctlrInstances.push(new controller());
             }
         }
-
         super.addControllers(ctlrInstances);
     }
 
