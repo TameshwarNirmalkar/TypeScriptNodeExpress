@@ -1,11 +1,11 @@
 {
   "name": "type-script-node-express",
   "version": "1.0.0",
-  "description": "TypeScriptNodeExpress sample app",
-  "main": "index.js",
+  "description": "TypeScript Node Express sample app",
+  "main": "server.ts",
   "scripts": {
-    "build": "node ./node_modules/typescript/bin/tsc",
-    "dev": "node ./node_modules/nodemon/bin/nodemon --config ./nodemon.json ./src/server.ts",
+    "build": "rm -rf ./dist && node ./node_modules/typescript/bin/tsc",
+    "dev": "node ./node_modules/nodemon/bin/nodemon --config ./nodemon.json",
     "start": "node ./node_modules/nodemon/bin/nodemon ./dist/server.js",
     "prod": "npm run build && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +14,19 @@
     "type": "git",
     "url": "git+https://github.com/TameshwarNirmalkar/TypeScriptNodeExpress.git"
   },
-  "keywords": [],
+  "keywords": [
+    "Express",
+    "TypeScript",
+    "ts",
+    "ex",
+    "expressjs",
+    "overnight",
+    "overnightjs",
+    "node",
+    "web",
+    "webserver",
+    "server"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
