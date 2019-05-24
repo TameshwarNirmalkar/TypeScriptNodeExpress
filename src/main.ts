@@ -22,15 +22,6 @@ class MainServer extends Server {
     }
 
     private setupControllers(): void {
-        // const ctlrInstances: any[] = [];
-        // for (const name in controllers) {
-        //     if (controllers.hasOwnProperty(name)) {
-        //         const controller = (controllers as any)[name];
-        //         ctlrInstances.push(new controller());
-        //     }
-        // }
-        // super.addControllers(ctlrInstances);
-
         const controllerInstances: any[] = [];
         for (const name of Object.keys(controllers)) {
             const controller = (controllers as any)[name];
