@@ -8,7 +8,8 @@
     "dev": "node ./node_modules/nodemon/bin/nodemon --config ./nodemon.json",
     "start": "node ./node_modules/nodemon/bin/nodemon ./dist/server.js",
     "prod": "npm run build && npm run start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "node ./node_modules/tslint/bin/tslint -c tslint.json -p tsconfig.json --fix"
   },
   "repository": {
     "type": "git",
@@ -43,12 +44,14 @@
     "simple-color-print": "^1.0.6",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "dotenv": "^8.0.0"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.5",
     "@overnightjs/core": "^1.5.0",
     "@overnightjs/logger": "^1.0.6",
+    "@types/cors": "^2.8.5",
+    "@types/dotenv": "^6.1.1",
     "@types/express": "^4.16.1"
   }
 }

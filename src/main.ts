@@ -32,7 +32,7 @@ class MainServer extends Server {
         super.addControllers(controllerInstances, null, true);
     }
 
-    public start(port: number): void {
+    public start(port: any): void {
 
         this.app.get('/', (req, res) => {
             res.send({ message: `${this.SERVER_STARTED}${port}` });
