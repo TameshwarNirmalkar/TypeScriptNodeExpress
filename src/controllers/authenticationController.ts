@@ -39,7 +39,7 @@ export class AuthenticationController {
 
   @Post('login/:version')
   private userLogin(req: Request, res: Response): void {
-    res.status(200).json({ ...this.loginSuccess });
+    res.status(200).json(Object.assign({}, this.loginSuccess, { token: req.params.version }));
   }
 
   @Post('otp/:version')

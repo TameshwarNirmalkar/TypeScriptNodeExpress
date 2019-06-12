@@ -37,6 +37,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "mongoose": "^5.5.9",
     "morgan": "^1.9.1",
@@ -44,14 +45,15 @@
     "simple-color-print": "^1.0.6",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
-    "typescript": "^3.4.5",
-    "dotenv": "^8.0.0"
+    "typescript": "^3.4.5"
   },
   "devDependencies": {
     "@overnightjs/core": "^1.5.0",
     "@overnightjs/logger": "^1.0.6",
     "@types/cors": "^2.8.5",
     "@types/dotenv": "^6.1.1",
-    "@types/express": "^4.16.1"
+    "@types/express": "^4.16.1",
+    "@types/mongodb": "^3.1.28",
+    "@types/mongoose": "^5.5.6"
   }
 }
