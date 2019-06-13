@@ -4,12 +4,11 @@ import logger from 'morgan';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
-import * as controllers from './controllers';
-
 import { Server } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
 import { cwarn } from 'simple-color-print';
 
+import * as controllers from './controllers';
 
 class MainServer extends Server {
 
@@ -46,7 +45,7 @@ class MainServer extends Server {
     });
   }
 
-  private setupConfig() {
+  private setupConfig(): void {
     const options: cors.CorsOptions = {
       allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token'],
       credentials: true,

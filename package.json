@@ -45,7 +45,7 @@
     "simple-color-print": "^1.0.6",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
-    "typescript": "^3.4.5"
+    "typescript": "^3.5.1"
   },
   "devDependencies": {
     "@overnightjs/core": "^1.5.0",

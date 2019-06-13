@@ -6,3 +6,4 @@ export * from './loginAsController';
 export * from './departmentRolePermissionController';
 export * from './orgRolePermissionContoller';
 export * from './userRfidAssignmentController';
+export * from './employeeController';
