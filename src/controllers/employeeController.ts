@@ -1,7 +1,14 @@
 import { Request, Response } from 'express';
 import { Controller, Middleware, Get, Put, Post, Delete } from '@overnightjs/core';
-import { Logger } from '@overnightjs/logger';
 import { cerr, cinfo, cwarn, cimp } from 'simple-color-print';
+
+import { connect, connection, Connection, model, Model, Document } from 'mongoose';
+
+// import { IModels } from '../models/model';
+// import employeeSchema from '../schemas/employeeSchema';
+// import { IEmployeeInterface } from '../interfaces/employeeInterface';
+
+import employeeModel from '../models/employeeModels';
 
 @Controller('employee/')
 export class EmployeeController {
@@ -11,28 +18,60 @@ export class EmployeeController {
     error_status: false,
     message: 'string',
   };
+  private mongoUrl: string = `${process.env.EMPLOYEE_DB}`;
+  private _db: Connection = connection;
+
   constructor() {
-    cinfo(`Employee As Controller`);
+    cinfo(`Employee As Controller: ${process.env.EMPLOYEE_DB}`);
+    this.mongoSetup();
+  }
+
+  private mongoSetup(): void {
+    connect(this.mongoUrl, { useNewUrlParser: true });
+    this._db.on('open', this.connected);
+    this._db.on('error', this.error);
+  }
+
+  private connected() {
+    cimp('Mongoose has connected');
+  }
+
+  private error(error) {
+    cimp(`Mongoose has errored, ${error}`);
   }
 
   @Get('list')
   private getEmployee(req: Request, res: Response) {
-    res.status(200).json({...this.genericRes});
+    // const connection = mongoose.connect(this.mongoUrl, { useNewUrlParser: true });
+    // const empData = mongoose.model<IEModel>('employee', employeeSchema);
+    // const empData = model<employeeModel>('employee', employeeSchema);
+    employeeModel.find({}, (err: any, data: any) => {
+      const fd =  data;
+      if (err) {
+        cwarn(`Err: ${err}`);
+        res.status(500).json({ ...err });
+      } else {
+        // if (data.length > 0) {
+          cwarn(`${fd}`);
+          res.send(fd);
+        // }
+      }
+    });
   }
 
   @Get('list/:id')
   private getEmployeeById(req: Request, res: Response) {
-    res.status(200).json({...this.genericRes});
+    res.status(200).json({ ...this.genericRes });
   }
 
   @Post('list')
   private addEmployee(req: Request, res: Response) {
-    res.status(200).json({...this.genericRes});
+    res.status(200).json({ ...this.genericRes });
   }
 
   @Delete('list/:id')
   private deleteEmployee(req: Request, res: Response) {
-    res.status(200).json({...this.genericRes});
+    res.status(200).json({ ...this.genericRes });
   }
 
 }

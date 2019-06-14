@@ -2,7 +2,7 @@
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import cors from 'cors';
-import mongoose from 'mongoose';
+import { connect, connection, Connection, model, Model, Document } from 'mongoose';
 
 import { Server } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
@@ -62,12 +62,12 @@ class MainServer extends Server {
     }));
     this.app.use(bodyParser.json({ limit: '50mb' }));
     // this.logger.warn(`Name: ${this.app.get}`);
-    this.mongoSetup();
+    // this.mongoSetup();
   }
 
   private mongoSetup(): void {
-    mongoose.connect(this.mongoUrl, { useNewUrlParser: true });
-    const db = mongoose.connection;
+    connect(this.mongoUrl, { useNewUrlParser: true });
+    const db: Connection = connection;
     db.on('error', cwarn.bind(cwarn, 'MongoDB Connection error'));
   }
 }
