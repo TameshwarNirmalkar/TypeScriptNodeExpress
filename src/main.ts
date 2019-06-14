@@ -5,16 +5,16 @@ import cors from 'cors';
 import { connect, connection, Connection, model, Model, Document } from 'mongoose';
 
 import { Server } from '@overnightjs/core';
-import { Logger } from '@overnightjs/logger';
-import { cwarn } from 'simple-color-print';
+import { cwarn, cimp, cerr, cinfo } from 'simple-color-print';
 
 import * as controllers from './controllers';
 
 class MainServer extends Server {
 
-  private readonly logger: Logger = new Logger();
   private readonly SERVER_STARTED = 'Main server started on http://127.0.0.1:';
-  private mongoUrl: string = 'mongodb://localhost:27017/EmployeeDB';
+  // private readonly mongoUrl: string = 'mongodb://localhost:27017/EmployeeDB';
+  private readonly mongoUrl: string = `${process.env.EMPLOYEE_DB}`;
+  private readonly _db: Connection = connection;
 
 
   constructor() {
@@ -41,7 +41,7 @@ class MainServer extends Server {
     });
 
     this.app.listen(port, () => {
-      this.logger.imp(`${this.SERVER_STARTED}${port}`);
+      cwarn(`${this.SERVER_STARTED}${port}`);
     });
   }
 
@@ -61,14 +61,21 @@ class MainServer extends Server {
       extended: true,
     }));
     this.app.use(bodyParser.json({ limit: '50mb' }));
-    // this.logger.warn(`Name: ${this.app.get}`);
-    // this.mongoSetup();
+    this.mongoSetup();
   }
 
   private mongoSetup(): void {
     connect(this.mongoUrl, { useNewUrlParser: true });
-    const db: Connection = connection;
-    db.on('error', cwarn.bind(cwarn, 'MongoDB Connection error'));
+    this._db.on('open', this.connected);
+    this._db.on('error', this.error);
+  }
+
+  private connected() {
+    cimp('Mongoose has connected');
+  }
+
+  private error(error) {
+    cimp(`Mongoose has errored, ${error}`);
   }
 }
 

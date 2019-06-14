@@ -18,26 +18,9 @@ export class EmployeeController {
     error_status: false,
     message: 'string',
   };
-  private mongoUrl: string = `${process.env.EMPLOYEE_DB}`;
-  private _db: Connection = connection;
 
   constructor() {
     cinfo(`Employee As Controller: ${process.env.EMPLOYEE_DB}`);
-    this.mongoSetup();
-  }
-
-  private mongoSetup(): void {
-    connect(this.mongoUrl, { useNewUrlParser: true });
-    this._db.on('open', this.connected);
-    this._db.on('error', this.error);
-  }
-
-  private connected() {
-    cimp('Mongoose has connected');
-  }
-
-  private error(error) {
-    cimp(`Mongoose has errored, ${error}`);
   }
 
   @Get('list')
@@ -51,10 +34,8 @@ export class EmployeeController {
         cwarn(`Err: ${err}`);
         res.status(500).json({ ...err });
       } else {
-        // if (data.length > 0) {
           cwarn(`${fd}`);
           res.send(fd);
-        // }
       }
     });
   }
