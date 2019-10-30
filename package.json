@@ -39,7 +39,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
-    "mongoose": "^5.5.9",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.0",
     "simple-color-print": "^1.0.6",
